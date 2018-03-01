@@ -6,7 +6,7 @@ class Item extends Component {
   renderButton() {
     if (this.props.quantity) {
       return <div>
-        <Button bsStyle="danger" bsSize="small" onClick={() => this.props.onDelete(this.props.name)}>usuń</Button>
+        <Button bsStyle="danger" bsSize="small" onClick={() => this.props.onRemove(this.props.name)}>usuń</Button>
         <Button bsStyle="default" bsSize="small" onClick={() => this.props.onAdd(this.props.name)}>Dodaj więcej</Button>
       </div>
 
@@ -36,7 +36,7 @@ Item.propTypes = {
   photoUrl: PropTypes.string.isRequired,
   inStock: PropTypes.bool.isRequired,
   onAdd: PropTypes.func.isRequired,
-  onDelete: PropTypes.func.isRequired,
+  onRemove: PropTypes.func.isRequired,
 }
 
 export default Item;

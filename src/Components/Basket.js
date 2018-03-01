@@ -1,6 +1,6 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Panel, Table } from 'react-bootstrap'
+import { Button, Panel, Table } from 'react-bootstrap'
 
 class Basket extends Component {
   render () {
@@ -8,7 +8,7 @@ class Basket extends Component {
       return null
     }
 
-    return <Fragment>
+    return <Panel>
       <Panel.Heading>
         <Panel.Title componentClass="h3">Koszyk</Panel.Title>
       </Panel.Heading>
@@ -19,6 +19,7 @@ class Basket extends Component {
           <th>Ilość</th>
           <th>Cena jedn</th>
           <th>Razem</th>
+          <th/>
         </tr>
         </thead>
         <tbody>
@@ -27,16 +28,20 @@ class Basket extends Component {
           <td>{item.quantity}</td>
           <td>{item.price}</td>
           <td>{Math.round(item.price * item.quantity * 100) / 100}</td>
+          <td>
+            <Button bsStyle="danger" bsSize="xs" onClick={() => this.props.onRemove(item.name)}>usuń</Button>
+          </td>
         </tr>)}
         </tbody>
       </Table>
-    </Fragment>
+    </Panel>
 
   }
 }
 
 Basket.propTypes = {
   items: PropTypes.array.isRequired,
+  onRemove: PropTypes.func.isRequired,
 }
 
 export default Basket;
