@@ -1,24 +1,18 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
-import reducer from '../Redux/reducers'
 import Demo from './ConnectedDemo';
+import createStore from '../Redux/store';
 
-const store = createStore(reducer)
+const store = createStore(window.REDUX_STATE || {});
 
 class App extends React.Component {
   render() {
     return (
       <Provider store={store}>
-        <Demo url={this.props.url} />
+        <Demo />
       </Provider>
     )
   }
-}
-
-App.propTypes = {
-  url: PropTypes.string.isRequired,
 }
 
 export default App;

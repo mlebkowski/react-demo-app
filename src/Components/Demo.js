@@ -10,8 +10,8 @@ class Demo extends Component {
 
   componentDidMount() {
     if (!this.props.products) {
-      console.log('Fetching', this.props.url);
-      ApiClient(this.props.url).then(data => this.props.onProductsLoaded(data));
+      console.log('Fetching on the client');
+      ApiClient().then(data => this.props.onProductsLoaded(data));
     }
   }
 
@@ -30,7 +30,6 @@ class Demo extends Component {
 }
 
 Demo.propTypes = {
-  url: PropTypes.string.isRequired,
   onAdd: PropTypes.func.isRequired,
   onRemove: PropTypes.func.isRequired,
   onProductsLoaded: PropTypes.func.isRequired,

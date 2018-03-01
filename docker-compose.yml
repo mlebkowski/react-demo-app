@@ -9,9 +9,22 @@ services:
         command: npm start
         environment:
             NODE_HOME: /home/npm
+            NODE_ENV: development
         labels:
           - 'traefik.port=3000'
 
+    ssr:
+        image: node:8
+        working_dir: /app
+        volumes:
+            - .:/app:cached
+            - npm:/home/npm
+        command: bash -c 'npm run build && node server/bootstrap.js'
+        environment:
+            NODE_HOME: /home/npm
+            NODE_ENV: development
+        labels:
+          - 'traefik.port=3000'
 
 networks:
     default:
