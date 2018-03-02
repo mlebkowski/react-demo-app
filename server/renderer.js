@@ -23,7 +23,7 @@ export default (store) => (req, res) => {
           '<div id="root"></div>',
           `<div id="root">${html}</div>`
         )
-        .replace('/*__SERVER_REDUX_STATE__*/undefined', reduxState)
+        .replace('window.REDUX_STATE=void 0', `window.REDUX_STATE=${reduxState}`)
     );
   });
 }
