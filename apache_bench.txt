@@ -1,0 +1,54 @@
+oetker@iMac-Oetker ~ [54]> ab -n 2500 -c 250 http://localhost:3000/                                                                                                                                                                                                                                                                                               16:02:01
+This is ApacheBench, Version 2.3 <$Revision: 1796539 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking localhost (be patient)
+Completed 250 requests
+Completed 500 requests
+Completed 750 requests
+Completed 1000 requests
+Completed 1250 requests
+Completed 1500 requests
+Completed 1750 requests
+Completed 2000 requests
+Completed 2250 requests
+Completed 2500 requests
+Finished 2500 requests
+
+
+Server Software:
+Server Hostname:        localhost
+Server Port:            3000
+
+Document Path:          /
+Document Length:        2615 bytes
+
+Concurrency Level:      250
+Time taken for tests:   0.803 seconds
+Complete requests:      2500
+Failed requests:        0
+Total transferred:      7045000 bytes
+HTML transferred:       6537500 bytes
+Requests per second:    3111.91 [#/sec] (mean)
+Time per request:       80.337 [ms] (mean)
+Time per request:       0.321 [ms] (mean, across all concurrent requests)
+Transfer rate:          8563.82 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0    2  10.9      0     147
+Processing:     3   73  17.0     74     106
+Waiting:        3   73  17.0     74     106
+Total:         15   75  18.8     74     233
+
+Percentage of the requests served within a certain time (ms)
+  50%     74
+  66%     80
+  75%     81
+  80%     83
+  90%     96
+  95%    103
+  98%    105
+  99%    106
+ 100%    233 (longest request)

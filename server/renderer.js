@@ -5,8 +5,13 @@ import Demo from '../src/Components/ConnectedDemo';
 
 const path = require("path");
 const fs = require("fs");
-export default (store) => (req, res) => {
 
+let html, reduxState, rendered;
+
+export default (store) => (req, res) => {
+  if(rendered) {
+   return res.send(rendered);
+  }
   const filePath = path.resolve(__dirname, '..', 'build', 'index.html');
   fs.readFile(filePath, 'utf8', (err, htmlData) => {
     if (err) {
@@ -14,11 +19,11 @@ export default (store) => (req, res) => {
       return res.status(404).end()
     }
 
-    const html = ReactDOMServer.renderToString(<Provider store={store}><Demo /></Provider>);
-    const reduxState = JSON.stringify(store.getState());
+    html = html || ReactDOMServer.renderToString(<Provider store={store}><Demo /></Provider>);
+    reduxState = reduxState || JSON.stringify(store.getState());
 
     return res.send(
-      htmlData
+      rendered = htmlData
         .replace(
           '<div id="root"></div>',
           `<div id="root">${html}</div>`
